@@ -91,14 +91,6 @@
       gap: 0.75rem;
     }
 
-    .hero-label::before {
-      content: '';
-      display: inline-block;
-      width: 2rem;
-      height: 1px;
-      background: var(--accent);
-    }
-
     h1 {
       font-family: var(--serif);
       font-size: clamp(2.8rem, 6vw, 4.5rem);
@@ -135,11 +127,11 @@
       border-radius: 2px;
     }
 
-    .hero-actions { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    .hero-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
 
     .btn-primary {
       display: inline-block;
-      padding: 0.8rem 2rem;
+      padding: 0.8rem 1.6rem;
       background: var(--accent);
       color: #0b0f0e;
       text-decoration: none;
@@ -154,12 +146,13 @@
 
     .btn-ghost {
       display: inline-block;
+      padding: 0.8rem 1.6rem;
       font-size: 0.9rem;
       color: var(--muted);
       text-decoration: none;
       letter-spacing: 0.02em;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 2px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
       transition: color 0.2s, border-color 0.2s;
     }
 
@@ -235,6 +228,7 @@
 
     @media (max-width: 640px) {
       nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; }
       .hero { padding: 7rem 1.5rem 3rem; }
       .cards-section { padding: 0 0 4rem; grid-template-columns: 1fr; }
       .card { border-right: none; border-bottom: 1px solid var(--border); }
@@ -261,6 +255,7 @@
       <a href="index.html">Home</a>
       <a href="resume.html">Resume</a>
       <a href="projects.html">Projects</a>
+      <a href="gisportfolio.html">GIS</a>
     </div>
   </nav>
 
@@ -281,9 +276,9 @@
         <span class="tag">R</span>
       </div>
       <div class="hero-actions">
-        <a href="projects.html" class="btn-primary">GIS Portfolio!</a>
-        <a href="projects.html" class="btn-primary">Engineering Projects!</a>
-        <a href="projects.html" class="btn-primary">View My Resume!</a>
+        <a href="gisportfolio.html" class="btn-primary">GIS Portfolio</a>
+        <a href="projects.html" class="btn-primary">Engineering Projects</a>
+        <a href="resume.html" class="btn-ghost">View Resume →</a>
       </div>
     </div>
   </section>
@@ -308,7 +303,7 @@
 
   <div class="contact-bar">
     <a href="mailto:advait@brown.edu">advait@brown.edu</a>
-    <span> | Providence, RI</span>
+    <span>Providence, RI</span>
   </div>
 
 </body>
