@@ -1,4 +1,353 @@
-!important; padding-left: 0 !important; }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects – Advait Mishra</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&family=DM+Mono&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0b0f0e;
+      --surface: #131917;
+      --surface2: #0f1512;
+      --border: #1f2b27;
+      --accent: #3ddc84;
+      --text: #e8ede9;
+      --muted: #7a9186;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+      --mono: 'DM Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      min-height: 100vh;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 3rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(11, 15, 14, 0.85);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links { display: flex; gap: 2rem; }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+    .page-header {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 8rem 3rem 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .page-label::before {
+      content: '';
+      display: inline-block;
+      width: 2rem;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .page-header h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .page-header p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 580px;
+    }
+
+    .projects-list {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 3rem 6rem;
+    }
+
+    .project-entry {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 0;
+      opacity: 0;
+      align-items: center;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .project-entry.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project-entry.reverse { direction: rtl; }
+    .project-entry.reverse > * { direction: ltr; }
+
+    .project-meta { padding-right: 3rem; }
+    .project-entry.reverse .project-meta { padding-right: 0; padding-left: 3rem; }
+
+    .project-number {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--border);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-type {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .project-meta h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 1.6rem;
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .method-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+    }
+
+    .method-block .method-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .method-block p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .method-block code {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--text);
+      background: var(--surface2);
+      padding: 0.15rem 0.4rem;
+      border-radius: 2px;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.2rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .link-btn.primary { background: var(--accent); color: #0b0f0e; }
+    .link-btn.primary:hover { background: #51e895; transform: translateY(-1px); }
+    .link-btn.ghost { border: 1px solid var(--border); color: var(--muted); }
+    .link-btn.ghost:hover { border-color: var(--muted); color: var(--text); }
+
+    .project-media {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .project-entry.reverse .project-media { padding-right: 3rem; }
+
+    .media-frame {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .media-frame.auto-height {
+      aspect-ratio: unset;
+      height: auto;
+    }
+
+    .media-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center center;
+      display: block;
+    }
+
+    .media-frame.auto-height img {
+      width: 100%;
+      height: auto;
+      object-fit: unset;
+      object-position: unset;
+    }
+
+    .media-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .media-placeholder .ph-icon {
+      font-family: var(--mono);
+      font-size: 1.5rem;
+      color: var(--border);
+    }
+
+    .media-placeholder .ph-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--border);
+      letter-spacing: 0.08em;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .media-caption {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      padding-top: 0.25rem;
+    }
+
+    .tools-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1rem;
+    }
+
+    .tool-tag {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      border-radius: 2px;
+      letter-spacing: 0.04em;
+    }
+
+    .contact-bar {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 1.5rem 3rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .contact-bar a {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-bar a:hover { color: var(--accent); }
+
+    .contact-bar span {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--border);
+    }
+
+    @media (max-width: 720px) {
+      nav { padding: 1rem 1.5rem; }
+      .page-header { padding: 7rem 1.5rem 2.5rem; }
+      .projects-list { padding: 0 1.5rem 4rem; }
+      .project-entry { grid-template-columns: 1fr; gap: 2rem; }
+      .project-entry.reverse { direction: ltr; }
+      .project-meta { padding-right: 0 !important; padding-left: 0 !important; }
       .project-entry.reverse .project-media { padding-right: 0; }
       .contact-bar { padding: 1.5rem; flex-direction: column; gap: 0.5rem; align-items: flex-start; }
     }
@@ -58,7 +407,6 @@
       </div>
       <div class="project-media">
         <div class="media-frame auto-height">
-          <!-- Upload to GitHub as: ammonia.png -->
           <img src="ammonia.png" alt="Gray vs Blue vs Green Ammonia 50-year climate impact">
         </div>
         <div class="media-caption">50-year temperature projection — gray vs blue vs green ammonia</div>
@@ -87,7 +435,6 @@
       </div>
       <div class="project-media">
         <div class="media-frame">
-          <!-- Upload to GitHub as: solar.png -->
           <div class="media-placeholder">
             <span class="ph-icon">◻</span>
             <span class="ph-label">UPLOAD AS: solar.png</span>
@@ -119,7 +466,6 @@
       </div>
       <div class="project-media">
         <div class="media-frame">
-          <!-- Upload to GitHub as: polaris.png -->
           <div class="media-placeholder">
             <span class="ph-icon">◻</span>
             <span class="ph-label">UPLOAD AS: polaris.png</span>
