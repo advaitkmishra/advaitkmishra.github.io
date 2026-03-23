@@ -245,12 +245,24 @@
       justify-content: center;
     }
 
+    .media-frame.auto-height {
+      aspect-ratio: unset;
+      height: auto;
+    }
+
     .media-frame img {
       width: 100%;
       height: 100%;
       object-fit: contain;
       object-position: center center;
       display: block;
+    }
+
+    .media-frame.auto-height img {
+      width: 100%;
+      height: auto;
+      object-fit: unset;
+      object-position: unset;
     }
 
     .media-frame iframe {
@@ -407,7 +419,7 @@
         </div>
       </div>
       <div class="project-media">
-        <div class="media-frame">
+        <div class="media-frame auto-height">
           <img src="Figs%20NDVI.png" alt="NDVI map output">
         </div>
         <div class="media-caption">NDVI composite output — LandSat-8 classification</div>
@@ -470,7 +482,7 @@
         </div>
       </div>
       <div class="project-media">
-        <div class="media-frame">
+        <div class="media-frame auto-height">
           <img src="Figs%20Evaluating%20Spectral%20Advancements.png" alt="AVIRIS Classic vs NG comparison">
         </div>
         <div class="media-caption">Spectral comparison — AVIRIS-Classic vs AVIRIS-NG</div>
