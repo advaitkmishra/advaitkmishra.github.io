@@ -219,18 +219,9 @@
       letter-spacing: 0.02em;
     }
 
-    .link-btn.primary {
-      background: var(--accent);
-      color: #0b0f0e;
-    }
-
+    .link-btn.primary { background: var(--accent); color: #0b0f0e; }
     .link-btn.primary:hover { background: #51e895; transform: translateY(-1px); }
-
-    .link-btn.ghost {
-      border: 1px solid var(--border);
-      color: var(--muted);
-    }
-
+    .link-btn.ghost { border: 1px solid var(--border); color: var(--muted); }
     .link-btn.ghost:hover { border-color: var(--muted); color: var(--text); }
 
     .project-media {
@@ -248,17 +239,9 @@
       border: 1px solid var(--border);
       border-radius: 4px;
       overflow: hidden;
-      position: relative;
     }
 
     .media-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .media-frame video {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -270,32 +253,6 @@
       height: 100%;
       border: none;
       display: block;
-    }
-
-    .media-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      background: var(--surface);
-    }
-
-    .media-placeholder .ph-icon {
-      font-family: var(--mono);
-      font-size: 1.5rem;
-      color: var(--border);
-    }
-
-    .media-placeholder .ph-label {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--border);
-      letter-spacing: 0.08em;
-      text-align: center;
-      padding: 0 1rem;
     }
 
     .media-caption {
@@ -397,10 +354,10 @@
         <div class="project-type">Functional WebGIS Tool</div>
         <h2>ArcticMap</h2>
         <p class="project-desc">
-          An interactive WebGIS platform developed at the Brown University DEEPS Earth Lab, designed to visualize and layer environmental hazards affecting Arctic Indigenous communities. The tool aggregates multi-source geospatial data — including permafrost thaw, coastal erosion, flooding, and air quality indices — into a unified, publicly accessible interface.
+          An interactive WebGIS platform developed at the Brown University DEEPS Earth Lab, designed to visualize and layer environmental hazards affecting Arctic Indigenous communities. Aggregates multi-source geospatial data — permafrost thaw, coastal erosion, flooding, and air quality — into a unified, publicly accessible interface.
         </p>
         <p class="project-desc">
-          Contributed to data pipeline construction, layer configuration, and sentiment analysis of 500+ social media posts to ground-truth community perception of environmental risk alongside quantitative hazard metrics.
+          Contributed to data pipeline construction, layer configuration, and sentiment analysis of 500+ social media posts to ground-truth community perception of environmental risk.
         </p>
         <div class="tools-row">
           <span class="tool-tag">ArcGIS</span>
@@ -413,34 +370,27 @@
           <a href="YOUR_ARCTICMAP_LINK_HERE" class="link-btn primary" target="_blank">Launch ArcticMap ↗</a>
         </div>
       </div>
-
       <div class="project-media">
         <div class="media-frame">
-          <!-- REPLACE with one of the following: -->
-          <!-- Self-hosted video: <video src="assets/arcticmap-demo.mp4" autoplay muted loop playsinline></video> -->
-          <!-- YouTube embed:     <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe> -->
-          <div class="media-placeholder">
-            <span class="ph-icon">▶</span>
-            <span class="ph-label">REPLACE WITH VIDEO PREVIEW<br>arcticmap-demo.mp4 or YouTube embed</span>
-          </div>
+          <img src="Figs%20ArcticMap.png" alt="ArcticMap WebGIS tool">
         </div>
-        <div class="media-caption">Demo — ArcticMap environmental hazard layers</div>
+        <div class="media-caption">ArcticMap — environmental hazard layers</div>
       </div>
     </article>
 
-    <!-- PROJECT 2 — NDVI / LandSat8 / GEE -->
+    <!-- PROJECT 2 — NDVI -->
     <article class="project-entry reverse">
       <div class="project-meta">
         <div class="project-number">02</div>
         <div class="project-type">Methodological Analysis</div>
         <h2>NDVI Analysis via LandSat-8 & Google Earth Engine</h2>
         <p class="project-desc">
-          Vegetation health assessment using Normalized Difference Vegetation Index (NDVI) derived from LandSat-8 multispectral imagery, processed entirely within Google Earth Engine's cloud-based geospatial platform.
+          Vegetation health assessment using Normalized Difference Vegetation Index (NDVI) derived from LandSat-8 multispectral imagery, processed within Google Earth Engine's cloud-based geospatial platform.
         </p>
         <div class="method-block">
           <div class="method-label">Methodology</div>
           <p>
-            LandSat-8 OLI imagery was filtered by date range, cloud cover, and geographic bounds using the <code>ee.ImageCollection</code> API. NDVI was computed as <code>(NIR − Red) / (NIR + Red)</code> using Bands 5 and 4. A median composite was generated to reduce atmospheric noise, then classified into vegetation density categories and exported as a GeoTIFF for downstream analysis in ArcGIS.
+            LandSat-8 OLI imagery was filtered by date range, cloud cover, and geographic bounds using the <code>ee.ImageCollection</code> API. NDVI was computed as <code>(NIR − Red) / (NIR + Red)</code> using Bands 5 and 4. A median composite was generated to reduce atmospheric noise, classified into vegetation density categories, and exported as a GeoTIFF for downstream analysis in ArcGIS.
           </p>
         </div>
         <div class="tools-row">
@@ -451,20 +401,15 @@
           <span class="tool-tag">NDVI</span>
         </div>
       </div>
-
       <div class="project-media">
         <div class="media-frame">
-          <!-- REPLACE: <img src="assets/ndvi-map.png" alt="NDVI map output"> -->
-          <div class="media-placeholder">
-            <span class="ph-icon">◻</span>
-            <span class="ph-label">REPLACE WITH NDVI OUTPUT IMAGE<br>assets/ndvi-map.png</span>
-          </div>
+          <img src="Figs%20NDVI.png" alt="NDVI map output">
         </div>
         <div class="media-caption">NDVI composite output — LandSat-8 classification</div>
       </div>
     </article>
 
-    <!-- PROJECT 3 — AVIRIS-NG Study -->
+    <!-- PROJECT 3 — AVIRIS-NG -->
     <article class="project-entry">
       <div class="project-meta">
         <div class="project-number">03</div>
@@ -474,7 +419,7 @@
           Applied research evaluating the spectral performance of NASA's AVIRIS-NG (Next Generation) airborne imaging spectrometer using remote sensing datasets over California. Analyzed spectral fidelity, signal-to-noise characteristics, and instrument calibration against known land-cover benchmarks.
         </p>
         <p class="project-desc">
-          Conducted at Northeastern University in collaboration with faculty researchers. Contributed to dataset preparation, statistical analysis in R, and manuscript drafting.
+          Conducted at Northeastern University. Contributed to dataset preparation, statistical analysis in R, and manuscript drafting.
         </p>
         <div class="tools-row">
           <span class="tool-tag">R</span>
@@ -487,16 +432,11 @@
           <a href="YOUR_AVIRIS_NG_ABSTRACT_LINK_HERE" class="link-btn primary" target="_blank">Read Abstract ↗</a>
         </div>
       </div>
-
       <div class="project-media">
         <div class="media-frame">
-          <!-- REPLACE: <img src="assets/aviris-ng-preview.png" alt="AVIRIS-NG spectral analysis"> -->
-          <div class="media-placeholder">
-            <span class="ph-icon">◻</span>
-            <span class="ph-label">REPLACE WITH PAPER PREVIEW IMAGE<br>assets/aviris-ng-preview.png</span>
-          </div>
+          <img src="Figs%20Just%20AvirisNG.png" alt="AVIRIS-NG spectral analysis">
         </div>
-        <div class="media-caption">AVIRIS-NG spectral performance analysis — NASA California dataset</div>
+        <div class="media-caption">AVIRIS-NG spectral performance — NASA California dataset</div>
       </div>
     </article>
 
@@ -507,10 +447,10 @@
         <div class="project-type">Published Research</div>
         <h2>AVIRIS-Classic vs AVIRIS-NG: Comparative Analysis</h2>
         <p class="project-desc">
-          A comparative evaluation of NASA's AVIRIS-Classic and AVIRIS-NG imaging spectrometers, assessing spectral range, spatial resolution, and data quality across matched acquisition zones in California. The study quantifies generational improvements and identifies scenarios where each instrument holds a performance advantage.
+          A comparative evaluation of NASA's AVIRIS-Classic and AVIRIS-NG imaging spectrometers, assessing spectral range, spatial resolution, and data quality across matched acquisition zones in California. Quantifies generational improvements and identifies scenarios where each instrument holds a performance advantage.
         </p>
         <p class="project-desc">
-          Primary analysis in R for statistical comparison of sensor outputs; spatial data managed and visualized in ArcGIS. Co-authored the resulting research paper submitted to Northeastern University.
+          Primary analysis in R for statistical comparison of sensor outputs; spatial data managed and visualized in ArcGIS. Co-authored the resulting research paper at Northeastern University.
         </p>
         <div class="tools-row">
           <span class="tool-tag">R</span>
@@ -521,20 +461,14 @@
           <span class="tool-tag">Northeastern University</span>
         </div>
         <div class="project-links">
-          <a href="YOUR_COMPARATIVE_PAPER_LINK_HERE" class="link-btn primary" target="_blank">Read Paper ↗</a>
-          <a href="YOUR_SECOND_LINK_IF_ANY" class="link-btn ghost" target="_blank">View Data ↗</a>
+          <a href="YOUR_COMPARATIVE_ABSTRACT_LINK_HERE" class="link-btn primary" target="_blank">Read Abstract ↗</a>
         </div>
       </div>
-
       <div class="project-media">
         <div class="media-frame">
-          <!-- REPLACE: <img src="assets/aviris-comparison.png" alt="AVIRIS Classic vs NG comparison"> -->
-          <div class="media-placeholder">
-            <span class="ph-icon">◻</span>
-            <span class="ph-label">REPLACE WITH COMPARISON FIGURE<br>assets/aviris-comparison.png</span>
-          </div>
+          <img src="Figs%20Evaluating%20Spectral%20Advancements.png" alt="AVIRIS Classic vs NG comparison">
         </div>
-        <div class="media-caption">Side-by-side spectral comparison — AVIRIS-Classic vs AVIRIS-NG</div>
+        <div class="media-caption">Spectral comparison — AVIRIS-Classic vs AVIRIS-NG</div>
       </div>
     </article>
 
@@ -549,7 +483,6 @@
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1 });
-
     document.querySelectorAll('.project-entry').forEach(el => observer.observe(el));
   </script>
 
