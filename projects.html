@@ -1,44 +1,147 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects – Advait Mishra</title>
-  <link rel="stylesheet" href="style.css">
+!important; padding-left: 0 !important; }
+      .project-entry.reverse .project-media { padding-right: 0; }
+      .contact-bar { padding: 1.5rem; flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .page-label { animation: fadeUp 0.5s ease both; }
+    .page-header h1 { animation: fadeUp 0.5s 0.1s ease both; }
+    .page-header p { animation: fadeUp 0.5s 0.2s ease both; }
+  </style>
 </head>
 <body>
+
   <nav>
-    <a href="index.html">Home</a>
-    <a href="resume.html">Resume</a>
-    <a href="projects.html">Projects</a>
+    <div class="nav-logo">AM — 2025</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="resume.html">Resume</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="gisportfolio.html">GIS</a>
+    </div>
   </nav>
 
-  <main>
+  <header class="page-header">
+    <div class="page-label">Engineering & Modeling</div>
     <h1>Projects</h1>
+    <p>Engineering design, computational modeling, and industry consulting — from decarbonization analysis to sustainable infrastructure.</p>
+  </header>
 
-    <div class="project">
-      <h2>ArcticMap – WebGIS Environmental Visualization Tool</h2>
-      <p>Contributed to development of an interactive WebGIS platform mapping environmental hazards on Arctic Indigenous lands, including data cleaning, layering environmental variables, and social media sentiment analysis.</p>
-      <p><em>Tools: ArcGIS, Python</em></p>
-    </div>
+  <section class="projects-list">
 
-    <div class="project">
-      <h2>AVIRIS Spectral Performance Study</h2>
-      <p>Compared AVIRIS-Classic and AVIRIS-NG sensor outputs using NASA's California remote sensing dataset. Co-authored a research paper with findings on spectral advancements relevant to aerospace instrumentation.</p>
-      <p><em>Tools: R, ArcGIS</em></p>
-    </div>
+    <!-- PROJECT 1 — Ammonia Decarbonization Model -->
+    <article class="project-entry">
+      <div class="project-meta">
+        <div class="project-number">01</div>
+        <div class="project-type">Computational Modeling</div>
+        <h2>Gray, Blue & Green Ammonia: Decarbonization Model</h2>
+        <p class="project-desc">
+          A quantitative climate impact model comparing three ammonia production pathways — gray (steam methane reforming), blue (SMR with carbon capture), and green (electrolysis powered by renewables) — modeled over a 50-year emissions horizon.
+        </p>
+        <div class="method-block">
+          <div class="method-label">Methodology</div>
+          <p>
+            Radiative forcing was computed for CO₂, CH₄, and N₂O using standard IPCC forcing equations. Emissions were propagated year-over-year and converted to temperature change via a <code>0.5 × ΔF</code> sensitivity factor. A key finding: blue ammonia produces greater warming than gray due to methane leakage during SMR and transport — consistent with real-world critiques of blue hydrogen as a transition fuel.
+          </p>
+        </div>
+        <div class="tools-row">
+          <span class="tool-tag">MATLAB</span>
+          <span class="tool-tag">Radiative Forcing</span>
+          <span class="tool-tag">Lifecycle Analysis</span>
+          <span class="tool-tag">Decarbonization A</span>
+          <span class="tool-tag">Brown University</span>
+        </div>
+      </div>
+      <div class="project-media">
+        <div class="media-frame auto-height">
+          <!-- Upload to GitHub as: ammonia.png -->
+          <img src="ammonia.png" alt="Gray vs Blue vs Green Ammonia 50-year climate impact">
+        </div>
+        <div class="media-caption">50-year temperature projection — gray vs blue vs green ammonia</div>
+      </div>
+    </article>
 
-    <div class="project">
-      <h2>Solar Charging Station – Brown ESW</h2>
-      <p>Collaborated with a 10-member engineering team to design and implement a solar-powered charging station on Brown's campus. Responsible for 3D modeling of structural components.</p>
-      <p><em>Tools: SolidWorks, Fusion 360</em></p>
-    </div>
+    <!-- PROJECT 2 — Solar Charging Station -->
+    <article class="project-entry reverse">
+      <div class="project-meta">
+        <div class="project-number">02</div>
+        <div class="project-type">Engineering Design</div>
+        <h2>Solar Charging Station</h2>
+        <p class="project-desc">
+          A collaborative engineering project with Brown University Engineers for a Sustainable World, designing and implementing a solar-powered charging station on Brown's campus. Worked as part of a 10-member team across mechanical design and project coordination.
+        </p>
+        <p class="project-desc">
+          Contributed to 3D modeling in SolidWorks and Fusion 360, coordinating component specifications and iterating on structural layouts through the full build process.
+        </p>
+        <div class="tools-row">
+          <span class="tool-tag">SolidWorks</span>
+          <span class="tool-tag">Fusion 360</span>
+          <span class="tool-tag">Brown ESW</span>
+          <span class="tool-tag">Sustainable Design</span>
+          <span class="tool-tag">Team Project</span>
+        </div>
+      </div>
+      <div class="project-media">
+        <div class="media-frame">
+          <!-- Upload to GitHub as: solar.png -->
+          <div class="media-placeholder">
+            <span class="ph-icon">◻</span>
+            <span class="ph-label">UPLOAD AS: solar.png</span>
+          </div>
+        </div>
+        <div class="media-caption">Completed solar charging station — Brown University campus</div>
+      </div>
+    </article>
 
-    <div class="project">
-      <h2>Water Filtration Research – Effwa Infra</h2>
-      <p>Researched hydrological variables and peak discharge relationships. Published three articles covering sustainable water management, desalination, and sewage treatment processes.</p>
-    </div>
+    <!-- PROJECT 3 — Polaris MEP -->
+    <article class="project-entry">
+      <div class="project-meta">
+        <div class="project-number">03</div>
+        <div class="project-type">Engineering Consulting</div>
+        <h2>Manufacturing Process Assessment — Polaris MEP</h2>
+        <p class="project-desc">
+          Engineering consulting internship with Polaris MEP, supporting process improvement projects for Philip Machine, a Rhode Island manufacturing company. Conducted on-site evaluations of industrial facilities across the state.
+        </p>
+        <p class="project-desc">
+          Assessed manufacturing processes including injection molding, heat treatment, and metal plating, evaluating automation potential, cybersecurity posture, and supply chain efficiency.
+        </p>
+        <div class="tools-row">
+          <span class="tool-tag">Process Engineering</span>
+          <span class="tool-tag">Injection Molding</span>
+          <span class="tool-tag">Heat Treatment</span>
+          <span class="tool-tag">Automation Assessment</span>
+          <span class="tool-tag">Supply Chain</span>
+        </div>
+      </div>
+      <div class="project-media">
+        <div class="media-frame">
+          <!-- Upload to GitHub as: polaris.png -->
+          <div class="media-placeholder">
+            <span class="ph-icon">◻</span>
+            <span class="ph-label">UPLOAD AS: polaris.png</span>
+          </div>
+        </div>
+        <div class="media-caption">Manufacturing site assessment — Polaris MEP, Rhode Island</div>
+      </div>
+    </article>
 
-  </main>
+  </section>
+
+  <div class="contact-bar">
+    <a href="mailto:advait@brown.edu">advait@brown.edu</a>
+    <span>Providence, RI</span>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.project-entry').forEach(el => observer.observe(el));
+  </script>
+
 </body>
 </html>
