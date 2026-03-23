@@ -218,6 +218,9 @@
       border-radius: 2px;
       transition: all 0.2s;
       letter-spacing: 0.02em;
+      cursor: pointer;
+      border: none;
+      background: none;
     }
 
     .link-btn.primary { background: var(--accent); color: #0b0f0e; }
@@ -250,6 +253,15 @@
       height: auto;
     }
 
+    .media-frame.borderless {
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      aspect-ratio: unset;
+      height: auto;
+      position: relative;
+    }
+
     .media-frame img {
       width: 100%;
       height: 100%;
@@ -258,36 +270,45 @@
       display: block;
     }
 
-    .media-frame.auto-height img {
+    .media-frame.auto-height img,
+    .media-frame.borderless img {
       width: 100%;
       height: auto;
       object-fit: unset;
       object-position: unset;
     }
 
-    .media-placeholder {
-      width: 100%;
-      height: 100%;
+    /* Circuit diagram overlay button */
+    .circuit-label {
+      position: absolute;
+      top: 10%;
+      left: 2%;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
       gap: 0.5rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
     }
 
-    .media-placeholder .ph-icon {
+    .circuit-label span {
       font-family: var(--mono);
-      font-size: 1.5rem;
-      color: var(--border);
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px;
+      transition: opacity 0.2s;
     }
 
-    .media-placeholder .ph-label {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--border);
-      letter-spacing: 0.08em;
-      text-align: center;
-      padding: 0 1rem;
+    .circuit-label:hover span { opacity: 0.7; }
+
+    .circuit-label svg {
+      width: 28px;
+      height: 28px;
+      overflow: visible;
     }
 
     .media-caption {
@@ -313,6 +334,76 @@
       color: var(--muted);
       border-radius: 2px;
       letter-spacing: 0.04em;
+    }
+
+    /* MODAL */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(0,0,0,0.85);
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal-inner {
+      position: relative;
+      max-width: 860px;
+      width: 100%;
+    }
+
+    .modal-inner img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: -2rem;
+      right: 0;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .modal-close:hover { color: var(--text); }
+
+    .media-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .media-placeholder .ph-icon {
+      font-family: var(--mono);
+      font-size: 1.5rem;
+      color: var(--border);
+    }
+
+    .media-placeholder .ph-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--border);
+      letter-spacing: 0.08em;
+      text-align: center;
+      padding: 0 1rem;
     }
 
     .contact-bar {
@@ -434,13 +525,17 @@
         </div>
       </div>
       <div class="project-media">
-        <div class="media-frame">
-          <div class="media-placeholder">
-            <span class="ph-icon">◻</span>
-            <span class="ph-label">UPLOAD AS: solar.png</span>
-          </div>
+        <div class="media-frame borderless">
+          <button class="circuit-label" onclick="document.getElementById('circuitModal').classList.add('open')">
+            <span>View Circuit Diagram</span>
+            <svg viewBox="0 0 28 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="14" y1="0" x2="14" y2="30" stroke="#3ddc84" stroke-width="1.5"/>
+              <polyline points="8,22 14,32 20,22" fill="none" stroke="#3ddc84" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <img src="solar.png" alt="Solar charging station SolidWorks render">
         </div>
-        <div class="media-caption">Completed solar charging station — Brown University campus</div>
+        <div class="media-caption">SolidWorks render — solar charging station, Brown ESW</div>
       </div>
     </article>
 
@@ -482,11 +577,23 @@
     <span>Providence, RI</span>
   </div>
 
+  <!-- CIRCUIT DIAGRAM MODAL -->
+  <div class="modal-overlay" id="circuitModal" onclick="if(event.target===this) this.classList.remove('open')">
+    <div class="modal-inner">
+      <button class="modal-close" onclick="document.getElementById('circuitModal').classList.remove('open')">✕ Close</button>
+      <img src="circuit.png" alt="Solar charging station circuit diagram">
+    </div>
+  </div>
+
   <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.project-entry').forEach(el => observer.observe(el));
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') document.getElementById('circuitModal').classList.remove('open');
+    });
   </script>
 
 </body>
