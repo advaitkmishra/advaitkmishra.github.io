@@ -220,12 +220,11 @@
       letter-spacing: 0.02em;
       cursor: pointer;
       border: none;
-      background: none;
     }
 
     .link-btn.primary { background: var(--accent); color: #0b0f0e; }
     .link-btn.primary:hover { background: #51e895; transform: translateY(-1px); }
-    .link-btn.ghost { border: 1px solid var(--border); color: var(--muted); }
+    .link-btn.ghost { border: 1px solid var(--border); color: var(--muted); background: none; }
     .link-btn.ghost:hover { border-color: var(--muted); color: var(--text); }
 
     .project-media {
@@ -236,80 +235,45 @@
 
     .project-entry.reverse .project-media { padding-right: 3rem; }
 
-    .media-frame {
+    /* CHART CONTAINER */
+    .chart-container {
       width: 100%;
-      aspect-ratio: 16/9;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 4px;
-      overflow: hidden;
+      padding: 1.25rem 1.25rem 0.75rem;
+    }
+
+    .chart-legend {
       display: flex;
-      align-items: center;
-      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
     }
 
-    .media-frame.auto-height {
-      aspect-ratio: unset;
-      height: auto;
-    }
-
-    .media-frame.borderless {
-      background: transparent;
-      border: none;
-      border-radius: 0;
-      aspect-ratio: unset;
-      height: auto;
-      position: relative;
-    }
-
-    .media-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center center;
-      display: block;
-    }
-
-    .media-frame.auto-height img,
-    .media-frame.borderless img {
-      width: 100%;
-      height: auto;
-      object-fit: unset;
-      object-position: unset;
-    }
-
-    /* Circuit diagram overlay button */
-    .circuit-label {
-      position: absolute;
-      top: 10%;
-      left: 2%;
+    .legend-item {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 0;
-    }
-
-    .circuit-label span {
       font-family: var(--mono);
-      font-size: 0.7rem;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border-bottom: 1px solid var(--accent);
-      padding-bottom: 1px;
-      transition: opacity 0.2s;
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      transition: color 0.2s, opacity 0.2s;
+      cursor: default;
+      opacity: 0.5;
     }
 
-    .circuit-label:hover span { opacity: 0.7; }
+    .legend-item.active { opacity: 1; }
 
-    .circuit-label svg {
-      width: 28px;
-      height: 28px;
-      overflow: visible;
+    .legend-dot {
+      width: 20px;
+      height: 2px;
+      border-radius: 1px;
+      flex-shrink: 0;
     }
+
+    canvas { display: block; width: 100% !important; }
 
     .media-caption {
       font-family: var(--mono);
@@ -334,6 +298,73 @@
       color: var(--muted);
       border-radius: 2px;
       letter-spacing: 0.04em;
+    }
+
+    /* SOLAR IMAGE */
+    .media-frame {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .media-frame.borderless {
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      aspect-ratio: unset;
+      height: auto;
+      position: relative;
+    }
+
+    .media-frame.borderless img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.4s ease;
+      transform-origin: center center;
+    }
+
+    .media-frame.borderless:hover img {
+      transform: scale(1.06);
+    }
+
+    .circuit-label {
+      position: absolute;
+      top: 10%;
+      left: 2%;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      z-index: 2;
+    }
+
+    .circuit-label span {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px;
+      transition: opacity 0.2s;
+    }
+
+    .circuit-label:hover span { opacity: 0.7; }
+
+    .circuit-label svg {
+      width: 28px;
+      height: 40px;
+      overflow: visible;
     }
 
     /* MODAL */
@@ -380,31 +411,6 @@
     }
 
     .modal-close:hover { color: var(--text); }
-
-    .media-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-
-    .media-placeholder .ph-icon {
-      font-family: var(--mono);
-      font-size: 1.5rem;
-      color: var(--border);
-    }
-
-    .media-placeholder .ph-label {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--border);
-      letter-spacing: 0.08em;
-      text-align: center;
-      padding: 0 1rem;
-    }
 
     .contact-bar {
       max-width: 1000px;
@@ -468,7 +474,7 @@
   <header class="page-header">
     <div class="page-label">Engineering & Modeling</div>
     <h1>Projects</h1>
-    <p>Engineering design, computational modeling, and industry consulting — from decarbonization analysis to sustainable infrastructure.</p>
+    <p>Engineering design and computational modeling — from decarbonization analysis to sustainable infrastructure.</p>
   </header>
 
   <section class="projects-list">
@@ -496,9 +502,24 @@
           <span class="tool-tag">Brown University</span>
         </div>
       </div>
+
       <div class="project-media">
-        <div class="media-frame auto-height">
-          <img src="ammonia.png" alt="Gray vs Blue vs Green Ammonia 50-year climate impact">
+        <div class="chart-container">
+          <div class="chart-legend">
+            <div class="legend-item active" id="legend-0">
+              <div class="legend-dot" style="background:#009966;"></div>
+              Case 3 — Green
+            </div>
+            <div class="legend-item active" id="legend-1">
+              <div class="legend-dot" style="background:#cc2200;"></div>
+              Case 2 — Blue
+            </div>
+            <div class="legend-item active" id="legend-2">
+              <div class="legend-dot" style="background:#007a8c;"></div>
+              Case 1 — Gray
+            </div>
+          </div>
+          <canvas id="ammoniaChart" height="220"></canvas>
         </div>
         <div class="media-caption">50-year temperature projection — gray vs blue vs green ammonia</div>
       </div>
@@ -539,37 +560,6 @@
       </div>
     </article>
 
-    <!-- PROJECT 3 — Polaris MEP -->
-    <article class="project-entry">
-      <div class="project-meta">
-        <div class="project-number">03</div>
-        <div class="project-type">Engineering Consulting</div>
-        <h2>Manufacturing Process Assessment — Polaris MEP</h2>
-        <p class="project-desc">
-          Engineering consulting internship with Polaris MEP, supporting process improvement projects for Philip Machine, a Rhode Island manufacturing company. Conducted on-site evaluations of industrial facilities across the state.
-        </p>
-        <p class="project-desc">
-          Assessed manufacturing processes including injection molding, heat treatment, and metal plating, evaluating automation potential, cybersecurity posture, and supply chain efficiency.
-        </p>
-        <div class="tools-row">
-          <span class="tool-tag">Process Engineering</span>
-          <span class="tool-tag">Injection Molding</span>
-          <span class="tool-tag">Heat Treatment</span>
-          <span class="tool-tag">Automation Assessment</span>
-          <span class="tool-tag">Supply Chain</span>
-        </div>
-      </div>
-      <div class="project-media">
-        <div class="media-frame">
-          <div class="media-placeholder">
-            <span class="ph-icon">◻</span>
-            <span class="ph-label">UPLOAD AS: polaris.png</span>
-          </div>
-        </div>
-        <div class="media-caption">Manufacturing site assessment — Polaris MEP, Rhode Island</div>
-      </div>
-    </article>
-
   </section>
 
   <div class="contact-bar">
@@ -585,7 +575,130 @@
     </div>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
   <script>
+    // ── Replicate MATLAB computation exactly ──────────────────────────────
+    const moles_atm = 1.8e20;
+    const engine_efficiency = 0.35;
+
+    // Case 1 — Gray (diesel combustion baseline)
+    const enthalpy_1 = 6345 * 1e3;
+    const reactions_1 = 10e18 / (enthalpy_1 * engine_efficiency);
+    const CO2_per_year_1 = reactions_1 * 10;
+
+    // Case 2 — Blue (SMR + CCS)
+    const enthalpy_2 = 317 * 1e3;
+    const enthalpy_4 = 165000, enthalpy_5 = 803000;
+    const reaction2s = 10e18 / (engine_efficiency * enthalpy_2);
+    const HB_required = reaction2s * 0.5;
+    const H2_required = HB_required * 3;
+    const gasShift = H2_required / 4;
+    const heat_gs = gasShift * enthalpy_4;
+    const rxn5 = heat_gs / (enthalpy_5 * 0.85);
+    const CO2_per_year_2 = rxn5 + gasShift;
+    const CH4_per_year_2 = (gasShift + rxn5) * 0.01;
+    const N2O_per_year_2 = reaction2s * 0.0005;
+
+    // Case 3 — Green (electrolysis, only N2O)
+    const N2O_per_year_3 = N2O_per_year_2;
+
+    // Radiative forcing functions
+    function rf_CO2(m) { return 5.35 * Math.log(1 + m / (moles_atm * 278e-6)); }
+    function rf_CH4(m) { return 0.036 * (Math.sqrt(1e9 * (m + 700e-9 * moles_atm) / moles_atm) - Math.sqrt(700)); }
+    function rf_N2O(m) { return 0.12 * (Math.sqrt(1e9 * (m + 270e-9 * moles_atm) / moles_atm) - Math.sqrt(270)); }
+    function rf_total(co2, ch4, n2o) { return rf_CO2(co2) + rf_CH4(ch4) + rf_N2O(n2o); }
+
+    // Simulate 50 years
+    const years = 50;
+    const labels = Array.from({length: years}, (_, i) => i + 1);
+    let c1 = [0,0,0], c2 = [0,0,0], c3 = [0,0,0];
+    const t1 = [], t2 = [], t3 = [];
+
+    for (let i = 0; i < years; i++) {
+      c1[0] += CO2_per_year_1;
+      c2[0] += CO2_per_year_2; c2[1] += CH4_per_year_2; c2[2] += N2O_per_year_2;
+      c3[2] += N2O_per_year_3;
+      t1.push(0.5 * rf_total(c1[0], c1[1], c1[2]));
+      t2.push(0.5 * rf_total(c2[0], c2[1], c2[2]));
+      t3.push(0.5 * rf_total(c3[0], c3[1], c3[2]));
+    }
+
+    // ── Chart.js setup ────────────────────────────────────────────────────
+    const ctx = document.getElementById('ammoniaChart').getContext('2d');
+
+    const datasets = [
+      { label: 'Case 3 — Green', data: t3, borderColor: '#009966', backgroundColor: 'transparent', borderWidth: 2, pointRadius: 0, pointHoverRadius: 4, tension: 0.3 },
+      { label: 'Case 2 — Blue',  data: t2, borderColor: '#cc2200', backgroundColor: 'transparent', borderWidth: 2, pointRadius: 0, pointHoverRadius: 4, tension: 0.3 },
+      { label: 'Case 1 — Gray',  data: t1, borderColor: '#007a8c', backgroundColor: 'transparent', borderWidth: 2, pointRadius: 0, pointHoverRadius: 4, tension: 0.3 },
+    ];
+
+    const chart = new Chart(ctx, {
+      type: 'line',
+      data: { labels, datasets },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: '#131917',
+            borderColor: '#1f2b27',
+            borderWidth: 1,
+            titleColor: '#7a9186',
+            bodyColor: '#e8ede9',
+            titleFont: { family: "'DM Mono', monospace", size: 11 },
+            bodyFont: { family: "'DM Mono', monospace", size: 11 },
+            padding: 10,
+            callbacks: {
+              title: ctx => `Year ${ctx[0].label}`,
+              label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(4)} °C`
+            }
+          }
+        },
+        scales: {
+          x: {
+            ticks: { color: '#7a9186', font: { family: "'DM Mono', monospace", size: 10 }, maxTicksLimit: 10 },
+            grid: { color: '#1f2b27' },
+            border: { color: '#1f2b27' },
+            title: { display: true, text: 'Years of Continuous Emissions', color: '#7a9186', font: { family: "'DM Mono', monospace", size: 10 } }
+          },
+          y: {
+            ticks: { color: '#7a9186', font: { family: "'DM Mono', monospace", size: 10 }, callback: v => v.toFixed(2) },
+            grid: { color: '#1f2b27' },
+            border: { color: '#1f2b27' },
+            title: { display: true, text: 'Change in Temperature (°C)', color: '#7a9186', font: { family: "'DM Mono', monospace", size: 10 } }
+          }
+        },
+        onHover: (event, elements) => {
+          const legendItems = document.querySelectorAll('.legend-item');
+          if (elements.length === 0) {
+            legendItems.forEach(el => el.classList.add('active'));
+            datasets.forEach((ds, i) => { ds.borderWidth = 2; ds.borderColor = ds.borderColor; });
+          } else {
+            const hoveredIdx = elements[0].datasetIndex;
+            legendItems.forEach((el, i) => {
+              el.classList.toggle('active', i === hoveredIdx);
+            });
+          }
+          chart.update('none');
+        }
+      }
+    });
+
+    // ── Legend hover syncs back to chart ─────────────────────────────────
+    document.querySelectorAll('.legend-item').forEach((item, i) => {
+      item.addEventListener('mouseenter', () => {
+        document.querySelectorAll('.legend-item').forEach((el, j) => {
+          el.classList.toggle('active', j === i);
+        });
+      });
+      item.addEventListener('mouseleave', () => {
+        document.querySelectorAll('.legend-item').forEach(el => el.classList.add('active'));
+      });
+    });
+
+    // ── Scroll reveal ─────────────────────────────────────────────────────
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1 });
