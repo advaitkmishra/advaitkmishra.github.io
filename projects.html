@@ -118,12 +118,12 @@
     .legend-dot { width: 20px; height: 2px; border-radius: 1px; flex-shrink: 0; }
     canvas { display: block; width: 100% !important; }
     .media-frame-borderless { position: relative; width: 100%; overflow: hidden; }
-    .media-frame-borderless img {
+    .media-frame-borderless img:not(.squiggly) {
       width: 100%; height: auto; display: block;
       transition: transform 0.4s ease;
       transform-origin: center center;
     }
-    .media-frame-borderless:hover img { transform: scale(1.06); }
+    .media-frame-borderless:hover img:not(.squiggly) { transform: scale(1.06); }
     .circuit-btn {
       position: absolute; top: 3%; left: 0%; z-index: 2;
       font-family: var(--mono); font-size: 0.7rem; color: #0b0f0e;
@@ -134,7 +134,7 @@
     .circuit-btn:hover { background: #51e895; transform: translateY(-1px); }
     .squiggly {
       position: absolute; top: 8%; left: 5%; z-index: 2;
-      width: 15px; height: auto; pointer-events: none;
+      width: 90px; height: auto; pointer-events: none;
       transform: none !important;
     }
     .media-caption { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.04em; padding-top: 0.25rem; }
