@@ -32,14 +32,13 @@
       top: 0; left: 0; right: 0;
       z-index: 100;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       padding: 1.25rem 3rem;
       border-bottom: 1px solid var(--border);
       background: rgba(11, 15, 14, 0.85);
       backdrop-filter: blur(12px);
     }
-    .nav-logo { font-family: var(--mono); font-size: 0.8rem; color: var(--accent); letter-spacing: 0.05em; }
     .nav-links { display: flex; gap: 2rem; }
     .nav-links a {
       text-decoration: none; font-size: 0.85rem; font-weight: 400;
@@ -126,13 +125,18 @@
     }
     .media-frame-borderless:hover img { transform: scale(1.06); }
     .circuit-btn {
-      position: absolute; top: 10%; left: 2%; z-index: 2;
+      position: absolute; top: 3%; left: 0%; z-index: 2;
       font-family: var(--mono); font-size: 0.7rem; color: #0b0f0e;
       background: var(--accent); border: none; border-radius: 2px;
       padding: 0.4rem 0.9rem; letter-spacing: 0.08em; text-transform: uppercase;
       cursor: pointer; transition: background 0.2s, transform 0.15s;
     }
     .circuit-btn:hover { background: #51e895; transform: translateY(-1px); }
+    .squiggly {
+      position: absolute; top: 10%; left: 1%; z-index: 2;
+      width: 80px; height: auto; pointer-events: none;
+      transition: none;
+    }
     .media-caption { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.04em; padding-top: 0.25rem; }
     .modal-overlay {
       display: none; position: fixed; inset: 0; z-index: 500;
@@ -260,6 +264,7 @@
           <button class="circuit-btn" onclick="document.getElementById('circuitModal').classList.add('open')">
             View Circuit Diagram
           </button>
+          <img src="squiggly.png" alt="" class="squiggly">
           <img src="solar.png" alt="Solar charging station SolidWorks render">
         </div>
         <div class="media-caption">SolidWorks render — solar charging station, Brown ESW</div>
