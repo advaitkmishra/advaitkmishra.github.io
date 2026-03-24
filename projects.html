@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&family=DM+Mono&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
     :root {
       --bg: #0b0f0e;
       --surface: #131917;
@@ -20,9 +19,7 @@
       --sans: 'DM Sans', sans-serif;
       --mono: 'DM Mono', monospace;
     }
-
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--bg);
       color: var(--text);
@@ -30,7 +27,6 @@
       font-weight: 300;
       min-height: 100vh;
     }
-
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -43,7 +39,6 @@
       background: rgba(11, 15, 14, 0.85);
       backdrop-filter: blur(12px);
     }
-
     .nav-logo { font-family: var(--mono); font-size: 0.8rem; color: var(--accent); letter-spacing: 0.05em; }
     .nav-links { display: flex; gap: 2rem; }
     .nav-links a {
@@ -51,12 +46,10 @@
       color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s;
     }
     .nav-links a:hover, .nav-links a.active { color: var(--text); }
-
     .page-header {
       max-width: 1000px; margin: 0 auto;
       padding: 8rem 3rem 3rem; border-bottom: 1px solid var(--border);
     }
-
     .page-label {
       font-family: var(--mono); font-size: 0.75rem; color: var(--accent);
       letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.25rem;
@@ -65,15 +58,12 @@
     .page-label::before {
       content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--accent);
     }
-
     .page-header h1 {
       font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 400; line-height: 1.15; margin-bottom: 1rem;
     }
     .page-header p { font-size: 1rem; color: var(--muted); line-height: 1.8; max-width: 580px; }
-
     .projects-list { max-width: 1000px; margin: 0 auto; padding: 0 3rem 6rem; }
-
     .project-entry {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -90,13 +80,10 @@
     .project-meta { padding-right: 3rem; }
     .project-entry.reverse .project-meta { padding-right: 0; padding-left: 3rem; }
     .project-entry.reverse .project-media { padding-right: 3rem; }
-
     .project-number { font-family: var(--mono); font-size: 0.65rem; color: var(--border); letter-spacing: 0.1em; margin-bottom: 0.75rem; }
     .project-type { font-family: var(--mono); font-size: 0.7rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
-
     .project-meta h2 { font-family: var(--serif); font-weight: 400; font-size: 1.6rem; line-height: 1.2; margin-bottom: 1.25rem; }
     .project-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
-
     .method-block {
       background: var(--surface); border: 1px solid var(--border);
       border-radius: 4px; padding: 1rem 1.25rem; margin: 1.25rem 0;
@@ -110,24 +97,18 @@
       font-family: var(--mono); font-size: 0.78rem; color: var(--text);
       background: var(--surface2); padding: 0.15rem 0.4rem; border-radius: 2px;
     }
-
     .tools-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
     .tool-tag {
       font-family: var(--mono); font-size: 0.65rem; padding: 0.25rem 0.6rem;
       border: 1px solid var(--border); color: var(--muted); border-radius: 2px; letter-spacing: 0.04em;
     }
-
-    /* CHART */
     .project-media { display: flex; flex-direction: column; gap: 1rem; }
-
     .chart-container {
       width: 100%; background: var(--surface);
       border: 1px solid var(--border); border-radius: 4px;
       padding: 1.25rem 1.25rem 0.75rem;
     }
-
     .chart-legend { display: flex; gap: 1.25rem; margin-bottom: 1rem; flex-wrap: nowrap; align-items: center; }
-
     .legend-item {
       display: flex; align-items: center; gap: 0.5rem;
       font-family: var(--mono); font-size: 0.68rem; color: var(--muted);
@@ -136,20 +117,14 @@
     }
     .legend-item.active { opacity: 1; }
     .legend-dot { width: 20px; height: 2px; border-radius: 1px; flex-shrink: 0; }
-
     canvas { display: block; width: 100% !important; }
-
-    /* SOLAR */
-    .media-frame-borderless {
-      position: relative; width: 100%; overflow: hidden;
-    }
+    .media-frame-borderless { position: relative; width: 100%; overflow: hidden; }
     .media-frame-borderless img {
       width: 100%; height: auto; display: block;
       transition: transform 0.4s ease;
       transform-origin: center center;
     }
     .media-frame-borderless:hover img { transform: scale(1.06); }
-
     .circuit-btn {
       position: absolute; top: 10%; left: 2%; z-index: 2;
       font-family: var(--mono); font-size: 0.7rem; color: #0b0f0e;
@@ -158,10 +133,7 @@
       cursor: pointer; transition: background 0.2s, transform 0.15s;
     }
     .circuit-btn:hover { background: #51e895; transform: translateY(-1px); }
-
     .media-caption { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.04em; padding-top: 0.25rem; }
-
-    /* MODAL */
     .modal-overlay {
       display: none; position: fixed; inset: 0; z-index: 500;
       background: rgba(0,0,0,0.85); align-items: center; justify-content: center; padding: 2rem;
@@ -176,7 +148,6 @@
       text-transform: uppercase; transition: color 0.2s;
     }
     .modal-close:hover { color: var(--text); }
-
     .contact-bar {
       max-width: 1000px; margin: 0 auto; padding: 1.5rem 3rem;
       border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between;
@@ -184,7 +155,6 @@
     .contact-bar a { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .contact-bar a:hover { color: var(--accent); }
     .contact-bar span { font-family: var(--mono); font-size: 0.72rem; color: var(--border); }
-
     @media (max-width: 720px) {
       nav { padding: 1rem 1.5rem; }
       .page-header { padding: 7rem 1.5rem 2.5rem; }
@@ -195,7 +165,6 @@
       .project-entry.reverse .project-media { padding-right: 0; }
       .contact-bar { padding: 1.5rem; flex-direction: column; gap: 0.5rem; align-items: flex-start; }
     }
-
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -208,10 +177,11 @@
 <body>
 
   <nav>
+    <div class="nav-logo">AM — 2025</div>
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="gisportfolio.html">GIS Portfolio</a>
-      <a href="projects.html">Engineering Projects</a>
+      <a href="projects.html" class="active">Engineering Projects</a>
       <a href="resume.html">Resume</a>
     </div>
   </nav>
@@ -247,7 +217,6 @@
           <span class="tool-tag">Brown University</span>
         </div>
       </div>
-
       <div class="project-media">
         <div class="chart-container">
           <div class="chart-legend">
@@ -314,12 +283,9 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
   <script>
-    // Compute data from MATLAB logic
     const moles_atm = 1.8e20;
     const eff = 0.35;
-
     const CO2_y1 = (10e18 / (6345e3 * eff)) * 10;
-
     const rxn2 = 10e18 / (eff * 317e3);
     const gasShift = (rxn2 * 0.5 * 3) / 4;
     const rxn5 = (gasShift * 165000) / (803000 * 0.85);
@@ -327,12 +293,10 @@
     const CH4_y2 = (gasShift + rxn5) * 0.01;
     const N2O_y2 = rxn2 * 0.0005;
     const N2O_y3 = N2O_y2;
-
     function rfCO2(m) { return 5.35 * Math.log(1 + m / (moles_atm * 278e-6)); }
     function rfCH4(m) { return 0.036 * (Math.sqrt(1e9 * (m + 700e-9 * moles_atm) / moles_atm) - Math.sqrt(700)); }
     function rfN2O(m) { return 0.12 * (Math.sqrt(1e9 * (m + 270e-9 * moles_atm) / moles_atm) - Math.sqrt(270)); }
     function rfTotal(co2, ch4, n2o) { return rfCO2(co2) + rfCH4(ch4) + rfN2O(n2o); }
-
     const labels = [], t1 = [], t2 = [], t3 = [];
     let c1 = [0,0,0], c2 = [0,0,0], c3 = [0,0,0];
     for (let i = 1; i <= 50; i++) {
@@ -344,14 +308,11 @@
       t2.push(0.5 * rfTotal(c2[0], c2[1], c2[2]));
       t3.push(0.5 * rfTotal(c3[0], c3[1], c3[2]));
     }
-
-    // datasets: index 0 = green, 1 = blue, 2 = gray
     const datasets = [
       { label: 'Green NH₃', data: t3, borderColor: '#3ddc84', backgroundColor: 'transparent', borderWidth: 2, pointRadius: 0, pointHoverRadius: 4, tension: 0.3 },
       { label: 'Blue NH₃',  data: t2, borderColor: '#4a9eff', backgroundColor: 'transparent', borderWidth: 2, pointRadius: 0, pointHoverRadius: 4, tension: 0.3 },
       { label: 'Gray NH₃',  data: t1, borderColor: '#a0b4b0', backgroundColor: 'transparent', borderWidth: 2, pointRadius: 0, pointHoverRadius: 4, tension: 0.3 },
     ];
-
     const chart = new Chart(document.getElementById('ammoniaChart').getContext('2d'), {
       type: 'line',
       data: { labels, datasets },
@@ -398,8 +359,6 @@
         }
       }
     });
-
-    // Legend hover
     document.querySelectorAll('.legend-item').forEach(item => {
       const idx = parseInt(item.dataset.chartIndex);
       item.addEventListener('mouseenter', () => {
@@ -411,13 +370,10 @@
         document.querySelectorAll('.legend-item').forEach(el => el.classList.add('active'));
       });
     });
-
-    // Scroll reveal
     const observer = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.05 });
     document.querySelectorAll('.project-entry').forEach(el => observer.observe(el));
-
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') document.getElementById('circuitModal').classList.remove('open');
     });
