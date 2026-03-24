@@ -66,11 +66,10 @@
       position: relative;
     }
 
-    /* text col extends slightly over photo */
+    /* text col extends over photo for depth */
     .hero-inner {
       position: relative;
       z-index: 2;
-      margin-right: -48px;
       max-width: 580px;
     }
 
@@ -113,13 +112,12 @@
 
     /* Shield sits between first and last name vertically */
     .brown-shield {
-      width: 62px;
+      width: 58px;
       height: auto;
       opacity: 0.92;
       flex-shrink: 0;
-      /* nudge down to sit in the gap between names */
-      margin-top: 1.4rem;
-      margin-left: 0.5rem;
+      margin-top: 0.6rem;
+      margin-left: 0.25rem;
     }
 
     .hero-desc {
@@ -183,16 +181,6 @@
       display: block;
       object-fit: cover;
       object-position: top center;
-      border-radius: 2px;
-      /* Fade bottom + corners */
-      mask-image:
-        linear-gradient(to bottom, black 45%, transparent 90%),
-        linear-gradient(to right, transparent 2%, black 14%, black 86%, transparent 98%);
-      mask-composite: intersect;
-      -webkit-mask-image:
-        linear-gradient(to bottom, black 45%, transparent 90%),
-        linear-gradient(to right, transparent 2%, black 14%, black 86%, transparent 98%);
-      -webkit-mask-composite: source-in;
     }
 
     /* CARDS */
@@ -281,12 +269,12 @@
       <div class="hero-actions">
         <a href="gisportfolio.html" class="btn-primary">GIS Portfolio</a>
         <a href="projects.html" class="btn-primary">Engineering Projects</a>
-        <a href="mailto:advait@brown.edu" class="btn-email">
+        <a href="/cdn-cgi/l/email-protection#8eefeaf8efe7faceecfce1f9e0a0ebeafb" class="btn-email">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="4" width="20" height="16" rx="2"/>
             <path d="m2 7 10 7 10-7"/>
           </svg>
-          advait@brown.edu
+          <span class="__cf_email__" data-cfemail="16777260777f6256746479617838737263">[email&#160;protected]</span>
         </a>
       </div>
     </div>
@@ -314,10 +302,4 @@
     </div>
   </section>
 
-  <div class="contact-bar">
-    <a href="mailto:advait@brown.edu">advait@brown.edu</a>
-    <span>Providence, RI</span>
-  </div>
-
-</body>
-</html>
+  <div class="co
