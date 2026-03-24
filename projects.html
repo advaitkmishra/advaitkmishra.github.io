@@ -44,386 +44,146 @@
       backdrop-filter: blur(12px);
     }
 
-    .nav-logo {
-      font-family: var(--mono);
-      font-size: 0.8rem;
-      color: var(--accent);
-      letter-spacing: 0.05em;
-    }
-
+    .nav-logo { font-family: var(--mono); font-size: 0.8rem; color: var(--accent); letter-spacing: 0.05em; }
     .nav-links { display: flex; gap: 2rem; }
-
     .nav-links a {
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 400;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      transition: color 0.2s;
+      text-decoration: none; font-size: 0.85rem; font-weight: 400;
+      color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s;
     }
-
     .nav-links a:hover, .nav-links a.active { color: var(--text); }
 
     .page-header {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 8rem 3rem 3rem;
-      border-bottom: 1px solid var(--border);
+      max-width: 1000px; margin: 0 auto;
+      padding: 8rem 3rem 3rem; border-bottom: 1px solid var(--border);
     }
 
     .page-label {
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      color: var(--accent);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 1.25rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+      font-family: var(--mono); font-size: 0.75rem; color: var(--accent);
+      letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.25rem;
+      display: flex; align-items: center; gap: 0.75rem;
     }
-
     .page-label::before {
-      content: '';
-      display: inline-block;
-      width: 2rem;
-      height: 1px;
-      background: var(--accent);
+      content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--accent);
     }
 
     .page-header h1 {
-      font-family: var(--serif);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 400;
-      line-height: 1.15;
-      margin-bottom: 1rem;
+      font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400; line-height: 1.15; margin-bottom: 1rem;
     }
+    .page-header p { font-size: 1rem; color: var(--muted); line-height: 1.8; max-width: 580px; }
 
-    .page-header p {
-      font-size: 1rem;
-      color: var(--muted);
-      line-height: 1.8;
-      max-width: 580px;
-    }
-
-    .projects-list {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 3rem 6rem;
-    }
+    .projects-list { max-width: 1000px; margin: 0 auto; padding: 0 3rem 6rem; }
 
     .project-entry {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0;
       border-bottom: 1px solid var(--border);
       padding: 4rem 0;
-      opacity: 0;
       align-items: center;
+      opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
-
-    .project-entry.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
+    .project-entry.visible { opacity: 1; transform: translateY(0); }
     .project-entry.reverse { direction: rtl; }
     .project-entry.reverse > * { direction: ltr; }
-
     .project-meta { padding-right: 3rem; }
     .project-entry.reverse .project-meta { padding-right: 0; padding-left: 3rem; }
-
-    .project-number {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--border);
-      letter-spacing: 0.1em;
-      margin-bottom: 0.75rem;
-    }
-
-    .project-type {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    .project-meta h2 {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: 1.6rem;
-      line-height: 1.2;
-      margin-bottom: 1.25rem;
-    }
-
-    .project-desc {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 1rem;
-    }
-
-    .method-block {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 1rem 1.25rem;
-      margin: 1.25rem 0;
-    }
-
-    .method-block .method-label {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-    }
-
-    .method-block p {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    .method-block code {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      color: var(--text);
-      background: var(--surface2);
-      padding: 0.15rem 0.4rem;
-      border-radius: 2px;
-    }
-
-    .project-links {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 1.5rem;
-    }
-
-    .link-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.55rem 1.2rem;
-      font-size: 0.8rem;
-      font-weight: 500;
-      text-decoration: none;
-      border-radius: 2px;
-      transition: all 0.2s;
-      letter-spacing: 0.02em;
-      cursor: pointer;
-      border: none;
-    }
-
-    .link-btn.primary { background: var(--accent); color: #0b0f0e; }
-    .link-btn.primary:hover { background: #51e895; transform: translateY(-1px); }
-    .link-btn.ghost { border: 1px solid var(--border); color: var(--muted); background: none; }
-    .link-btn.ghost:hover { border-color: var(--muted); color: var(--text); }
-
-    .project-media {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
     .project-entry.reverse .project-media { padding-right: 3rem; }
 
-    /* CHART CONTAINER */
+    .project-number { font-family: var(--mono); font-size: 0.65rem; color: var(--border); letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+    .project-type { font-family: var(--mono); font-size: 0.7rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
+
+    .project-meta h2 { font-family: var(--serif); font-weight: 400; font-size: 1.6rem; line-height: 1.2; margin-bottom: 1.25rem; }
+    .project-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+
+    .method-block {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 4px; padding: 1rem 1.25rem; margin: 1.25rem 0;
+    }
+    .method-block .method-label {
+      font-family: var(--mono); font-size: 0.65rem; color: var(--accent);
+      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.6rem;
+    }
+    .method-block p { font-size: 0.82rem; color: var(--muted); line-height: 1.75; }
+    .method-block code {
+      font-family: var(--mono); font-size: 0.78rem; color: var(--text);
+      background: var(--surface2); padding: 0.15rem 0.4rem; border-radius: 2px;
+    }
+
+    .tools-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+    .tool-tag {
+      font-family: var(--mono); font-size: 0.65rem; padding: 0.25rem 0.6rem;
+      border: 1px solid var(--border); color: var(--muted); border-radius: 2px; letter-spacing: 0.04em;
+    }
+
+    /* CHART */
+    .project-media { display: flex; flex-direction: column; gap: 1rem; }
+
     .chart-container {
-      width: 100%;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
+      width: 100%; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 4px;
       padding: 1.25rem 1.25rem 0.75rem;
     }
 
-    .chart-legend {
-      display: flex;
-      gap: 1.5rem;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-    }
+    .chart-legend { display: flex; gap: 1.25rem; margin-bottom: 1rem; flex-wrap: nowrap; align-items: center; }
 
     .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-      transition: color 0.2s, opacity 0.2s;
-      cursor: default;
-      opacity: 0.5;
+      display: flex; align-items: center; gap: 0.5rem;
+      font-family: var(--mono); font-size: 0.68rem; color: var(--muted);
+      letter-spacing: 0.05em; cursor: default;
+      opacity: 0.4; transition: opacity 0.2s;
     }
-
     .legend-item.active { opacity: 1; }
-
-    .legend-dot {
-      width: 20px;
-      height: 2px;
-      border-radius: 1px;
-      flex-shrink: 0;
-    }
+    .legend-dot { width: 20px; height: 2px; border-radius: 1px; flex-shrink: 0; }
 
     canvas { display: block; width: 100% !important; }
 
-    .media-caption {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-      padding-top: 0.25rem;
+    /* SOLAR */
+    .media-frame-borderless {
+      position: relative; width: 100%; overflow: hidden;
     }
-
-    .tools-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 1rem;
-    }
-
-    .tool-tag {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      padding: 0.25rem 0.6rem;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      border-radius: 2px;
-      letter-spacing: 0.04em;
-    }
-
-    /* SOLAR IMAGE */
-    .media-frame {
-      width: 100%;
-      aspect-ratio: 16/9;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .media-frame.borderless {
-      background: transparent;
-      border: none;
-      border-radius: 0;
-      aspect-ratio: unset;
-      height: auto;
-      position: relative;
-    }
-
-    .media-frame.borderless img {
-      width: 100%;
-      height: auto;
-      display: block;
+    .media-frame-borderless img {
+      width: 100%; height: auto; display: block;
       transition: transform 0.4s ease;
       transform-origin: center center;
     }
+    .media-frame-borderless:hover img { transform: scale(1.06); }
 
-    .media-frame.borderless:hover img {
-      transform: scale(1.06);
+    .circuit-btn {
+      position: absolute; top: 10%; left: 2%; z-index: 2;
+      font-family: var(--mono); font-size: 0.7rem; color: #0b0f0e;
+      background: var(--accent); border: none; border-radius: 2px;
+      padding: 0.4rem 0.9rem; letter-spacing: 0.08em; text-transform: uppercase;
+      cursor: pointer; transition: background 0.2s, transform 0.15s;
     }
+    .circuit-btn:hover { background: #51e895; transform: translateY(-1px); }
 
-    .circuit-label {
-      position: absolute;
-      top: 10%;
-      left: 2%;
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      color: #0b0f0e;
-      background: var(--accent);
-      border: none;
-      border-radius: 2px;
-      padding: 0.4rem 0.9rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      cursor: pointer;
-      z-index: 2;
-      transition: background 0.2s, transform 0.15s;
-    }
-
-    .circuit-label:hover { background: #51e895; transform: translateY(-1px); }
+    .media-caption { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.04em; padding-top: 0.25rem; }
 
     /* MODAL */
     .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 500;
-      background: rgba(0,0,0,0.85);
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
+      display: none; position: fixed; inset: 0; z-index: 500;
+      background: rgba(0,0,0,0.85); align-items: center; justify-content: center; padding: 2rem;
     }
-
     .modal-overlay.open { display: flex; }
-
-    .modal-inner {
-      position: relative;
-      max-width: 860px;
-      width: 100%;
-    }
-
-    .modal-inner img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 4px;
-      border: 1px solid var(--border);
-    }
-
+    .modal-inner { position: relative; max-width: 860px; width: 100%; }
+    .modal-inner img { width: 100%; height: auto; display: block; border-radius: 4px; border: 1px solid var(--border); }
     .modal-close {
-      position: absolute;
-      top: -2rem;
-      right: 0;
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      color: var(--muted);
-      background: none;
-      border: none;
-      cursor: pointer;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: color 0.2s;
+      position: absolute; top: -2rem; right: 0;
+      font-family: var(--mono); font-size: 0.75rem; color: var(--muted);
+      background: none; border: none; cursor: pointer; letter-spacing: 0.1em;
+      text-transform: uppercase; transition: color 0.2s;
     }
-
     .modal-close:hover { color: var(--text); }
 
     .contact-bar {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 1.5rem 3rem;
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      max-width: 1000px; margin: 0 auto; padding: 1.5rem 3rem;
+      border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between;
     }
-
-    .contact-bar a {
-      font-family: var(--mono);
-      font-size: 0.8rem;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
+    .contact-bar a { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .contact-bar a:hover { color: var(--accent); }
-
-    .contact-bar span {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--border);
-    }
+    .contact-bar span { font-family: var(--mono); font-size: 0.72rem; color: var(--border); }
 
     @media (max-width: 720px) {
       nav { padding: 1rem 1.5rem; }
@@ -440,7 +200,6 @@
       from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
     .page-label { animation: fadeUp 0.5s ease both; }
     .page-header h1 { animation: fadeUp 0.5s 0.1s ease both; }
     .page-header p { animation: fadeUp 0.5s 0.2s ease both; }
@@ -466,7 +225,7 @@
 
   <section class="projects-list">
 
-    <!-- PROJECT 1 — Ammonia Decarbonization Model -->
+    <!-- PROJECT 1 — Ammonia -->
     <article class="project-entry">
       <div class="project-meta">
         <div class="project-number">01</div>
@@ -493,17 +252,14 @@
       <div class="project-media">
         <div class="chart-container">
           <div class="chart-legend">
-            <div class="legend-item active" id="legend-1">
-              <div class="legend-dot" style="background:#cc2200;"></div>
-              Blue Ammonia
+            <div class="legend-item active" data-chart-index="1">
+              <div class="legend-dot" style="background:#4a9eff;"></div>Blue NH₃
             </div>
-            <div class="legend-item active" id="legend-2">
-              <div class="legend-dot" style="background:#007a8c;"></div>
-              Gray Ammonia
+            <div class="legend-item active" data-chart-index="2">
+              <div class="legend-dot" style="background:#a0b4b0;"></div>Gray NH₃
             </div>
-            <div class="legend-item active" id="legend-0">
-              <div class="legend-dot" style="background:#009966;"></div>
-              Green Ammonia
+            <div class="legend-item active" data-chart-index="0">
+              <div class="legend-dot" style="background:#3ddc84;"></div>Green NH₃
             </div>
           </div>
           <canvas id="ammoniaChart" height="220"></canvas>
@@ -512,7 +268,7 @@
       </div>
     </article>
 
-    <!-- PROJECT 2 — Solar Charging Station -->
+    <!-- PROJECT 2 — Solar -->
     <article class="project-entry reverse">
       <div class="project-meta">
         <div class="project-number">02</div>
@@ -533,8 +289,8 @@
         </div>
       </div>
       <div class="project-media">
-        <div class="media-frame borderless">
-          <button class="circuit-label" onclick="document.getElementById('circuitModal').classList.add('open')">
+        <div class="media-frame-borderless">
+          <button class="circuit-btn" onclick="document.getElementById('circuitModal').classList.add('open')">
             View Circuit Diagram
           </button>
           <img src="solar.png" alt="Solar charging station SolidWorks render">
@@ -546,11 +302,10 @@
   </section>
 
   <div class="contact-bar">
-    <a href="/cdn-cgi/l/email-protection#16777260777f6256746479617838737263"><span class="__cf_email__" data-cfemail="1a7b7e6c7b736e5a7868756d74347f7e6f">[email&#160;protected]</span></a>
+    <a href="mailto:advait@brown.edu">advait@brown.edu</a>
     <span>Providence, RI</span>
   </div>
 
-  <!-- CIRCUIT DIAGRAM MODAL -->
   <div class="modal-overlay" id="circuitModal" onclick="if(event.target===this) this.classList.remove('open')">
     <div class="modal-inner">
       <button class="modal-close" onclick="document.getElementById('circuitModal').classList.remove('open')">✕ Close</button>
@@ -558,64 +313,47 @@
     </div>
   </div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
   <script>
-    // ── Replicate MATLAB computation exactly ──────────────────────────────
+    // Compute data from MATLAB logic
     const moles_atm = 1.8e20;
-    const engine_efficiency = 0.35;
+    const eff = 0.35;
 
-    // Case 1 — Gray (diesel combustion baseline)
-    const enthalpy_1 = 6345 * 1e3;
-    const reactions_1 = 10e18 / (enthalpy_1 * engine_efficiency);
-    const CO2_per_year_1 = reactions_1 * 10;
+    const CO2_y1 = (10e18 / (6345e3 * eff)) * 10;
 
-    // Case 2 — Blue (SMR + CCS)
-    const enthalpy_2 = 317 * 1e3;
-    const enthalpy_4 = 165000, enthalpy_5 = 803000;
-    const reaction2s = 10e18 / (engine_efficiency * enthalpy_2);
-    const HB_required = reaction2s * 0.5;
-    const H2_required = HB_required * 3;
-    const gasShift = H2_required / 4;
-    const heat_gs = gasShift * enthalpy_4;
-    const rxn5 = heat_gs / (enthalpy_5 * 0.85);
-    const CO2_per_year_2 = rxn5 + gasShift;
-    const CH4_per_year_2 = (gasShift + rxn5) * 0.01;
-    const N2O_per_year_2 = reaction2s * 0.0005;
+    const rxn2 = 10e18 / (eff * 317e3);
+    const gasShift = (rxn2 * 0.5 * 3) / 4;
+    const rxn5 = (gasShift * 165000) / (803000 * 0.85);
+    const CO2_y2 = rxn5 + gasShift;
+    const CH4_y2 = (gasShift + rxn5) * 0.01;
+    const N2O_y2 = rxn2 * 0.0005;
+    const N2O_y3 = N2O_y2;
 
-    // Case 3 — Green (electrolysis, only N2O)
-    const N2O_per_year_3 = N2O_per_year_2;
+    function rfCO2(m) { return 5.35 * Math.log(1 + m / (moles_atm * 278e-6)); }
+    function rfCH4(m) { return 0.036 * (Math.sqrt(1e9 * (m + 700e-9 * moles_atm) / moles_atm) - Math.sqrt(700)); }
+    function rfN2O(m) { return 0.12 * (Math.sqrt(1e9 * (m + 270e-9 * moles_atm) / moles_atm) - Math.sqrt(270)); }
+    function rfTotal(co2, ch4, n2o) { return rfCO2(co2) + rfCH4(ch4) + rfN2O(n2o); }
 
-    // Radiative forcing functions
-    function rf_CO2(m) { return 5.35 * Math.log(1 + m / (moles_atm * 278e-6)); }
-    function rf_CH4(m) { return 0.036 * (Math.sqrt(1e9 * (m + 700e-9 * moles_atm) / moles_atm) - Math.sqrt(700)); }
-    function rf_N2O(m) { return 0.12 * (Math.sqrt(1e9 * (m + 270e-9 * moles_atm) / moles_atm) - Math.sqrt(270)); }
-    function rf_total(co2, ch4, n2o) { return rf_CO2(co2) + rf_CH4(ch4) + rf_N2O(n2o); }
-
-    // Simulate 50 years
-    const years = 50;
-    const labels = Array.from({length: years}, (_, i) => i + 1);
+    const labels = [], t1 = [], t2 = [], t3 = [];
     let c1 = [0,0,0], c2 = [0,0,0], c3 = [0,0,0];
-    const t1 = [], t2 = [], t3 = [];
-
-    for (let i = 0; i < years; i++) {
-      c1[0] += CO2_per_year_1;
-      c2[0] += CO2_per_year_2; c2[1] += CH4_per_year_2; c2[2] += N2O_per_year_2;
-      c3[2] += N2O_per_year_3;
-      t1.push(0.5 * rf_total(c1[0], c1[1], c1[2]));
-      t2.push(0.5 * rf_total(c2[0], c2[1], c2[2]));
-      t3.push(0.5 * rf_total(c3[0], c3[1], c3[2]));
+    for (let i = 1; i <= 50; i++) {
+      labels.push(i);
+      c1[0] += CO2_y1;
+      c2[0] += CO2_y2; c2[1] += CH4_y2; c2[2] += N2O_y2;
+      c3[2] += N2O_y3;
+      t1.push(0.5 * rfTotal(c1[0], c1[1], c1[2]));
+      t2.push(0.5 * rfTotal(c2[0], c2[1], c2[2]));
+      t3.push(0.5 * rfTotal(c3[0], c3[1], c3[2]));
     }
 
-    // ── Chart.js setup ────────────────────────────────────────────────────
-    const ctx = document.getElementById('ammoniaChart').getContext('2d');
-
+    // datasets: index 0 = green, 1 = blue, 2 = gray
     const datasets = [
-      { label: 'Green Ammonia', data: t3, borderColor: '#009966', backgroundColor: 'transparent', borderWidth: 2, pointRadius: 0, pointHoverRadius: 4, tension: 0.3 },
-      { label: 'Blue Ammonia',  data: t2, borderColor: '#cc2200', backgroundColor: 'transparent', borderWidth: 2, pointRadius: 0, pointHoverRadius: 4, tension: 0.3 },
-      { label: 'Gray Ammonia',  data: t1, borderColor: '#007a8c', backgroundColor: 'transparent', borderWidth: 2, pointRadius: 0, pointHoverRadius: 4, tension: 0.3 },
+      { label: 'Green NH₃', data: t3, borderColor: '#3ddc84', backgroundColor: 'transparent', borderWidth: 2, pointRadius: 0, pointHoverRadius: 4, tension: 0.3 },
+      { label: 'Blue NH₃',  data: t2, borderColor: '#4a9eff', backgroundColor: 'transparent', borderWidth: 2, pointRadius: 0, pointHoverRadius: 4, tension: 0.3 },
+      { label: 'Gray NH₃',  data: t1, borderColor: '#a0b4b0', backgroundColor: 'transparent', borderWidth: 2, pointRadius: 0, pointHoverRadius: 4, tension: 0.3 },
     ];
 
-    const chart = new Chart(ctx, {
+    const chart = new Chart(document.getElementById('ammoniaChart').getContext('2d'), {
       type: 'line',
       data: { labels, datasets },
       options: {
@@ -625,58 +363,49 @@
         plugins: {
           legend: { display: false },
           tooltip: {
-            backgroundColor: '#131917',
-            borderColor: '#1f2b27',
-            borderWidth: 1,
-            titleColor: '#7a9186',
-            bodyColor: '#e8ede9',
+            backgroundColor: '#131917', borderColor: '#1f2b27', borderWidth: 1,
+            titleColor: '#7a9186', bodyColor: '#e8ede9',
             titleFont: { family: "'DM Mono', monospace", size: 11 },
             bodyFont: { family: "'DM Mono', monospace", size: 11 },
             padding: 10,
             callbacks: {
-              title: ctx => `Year ${ctx[0].label}`,
-              label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(4)} °C`
+              title: c => `Year ${c[0].label}`,
+              label: c => ` ${c.dataset.label}: ${c.parsed.y.toFixed(4)} °C`
             }
           }
         },
         scales: {
           x: {
             ticks: { color: '#7a9186', font: { family: "'DM Mono', monospace", size: 10 }, maxTicksLimit: 10 },
-            grid: { color: '#1f2b27' },
-            border: { color: '#1f2b27' },
+            grid: { color: '#1f2b27' }, border: { color: '#1f2b27' },
             title: { display: true, text: 'Years of Continuous Emissions', color: '#7a9186', font: { family: "'DM Mono', monospace", size: 10 } }
           },
           y: {
             ticks: { color: '#7a9186', font: { family: "'DM Mono', monospace", size: 10 }, callback: v => v.toFixed(2) },
-            grid: { color: '#1f2b27' },
-            border: { color: '#1f2b27' },
+            grid: { color: '#1f2b27' }, border: { color: '#1f2b27' },
             title: { display: true, text: 'Change in Temperature (°C)', color: '#7a9186', font: { family: "'DM Mono', monospace", size: 10 } }
           }
         },
         onHover: (event, elements) => {
-          const legendItems = document.querySelectorAll('.legend-item');
+          const items = document.querySelectorAll('.legend-item');
           if (elements.length === 0) {
-            legendItems.forEach(el => el.classList.add('active'));
-            datasets.forEach((ds, i) => { ds.borderWidth = 2; ds.borderColor = ds.borderColor; });
+            items.forEach(el => el.classList.add('active'));
           } else {
-            const hoveredIdx = elements[0].datasetIndex;
-            legendItems.forEach((el, i) => {
-              el.classList.toggle('active', i === hoveredIdx);
+            const idx = elements[0].datasetIndex;
+            items.forEach(el => {
+              el.classList.toggle('active', parseInt(el.dataset.chartIndex) === idx);
             });
           }
-          chart.update('none');
         }
       }
     });
 
-    // ── Legend hover syncs back to chart ─────────────────────────────────
-    // Visual order in DOM: blue(1), gray(2), green(0)
-    const legendOrder = [1, 2, 0];
-    document.querySelectorAll('.legend-item').forEach((item, domIdx) => {
-      const chartIdx = legendOrder[domIdx];
+    // Legend hover
+    document.querySelectorAll('.legend-item').forEach(item => {
+      const idx = parseInt(item.dataset.chartIndex);
       item.addEventListener('mouseenter', () => {
-        document.querySelectorAll('.legend-item').forEach((el, j) => {
-          el.classList.toggle('active', j === domIdx);
+        document.querySelectorAll('.legend-item').forEach(el => {
+          el.classList.toggle('active', parseInt(el.dataset.chartIndex) === idx);
         });
       });
       item.addEventListener('mouseleave', () => {
@@ -684,8 +413,16 @@
       });
     });
 
-    // ── Scroll reveal ─────────────────────────────────────────────────────
-    const observer = new IntersectionObserver((entries) => {
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll(
+    }, { threshold: 0.05 });
+    document.querySelectorAll('.project-entry').forEach(el => observer.observe(el));
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') document.getElementById('circuitModal').classList.remove('open');
+    });
+  </script>
+
+</body>
+</html>
