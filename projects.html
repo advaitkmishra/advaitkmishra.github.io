@@ -338,34 +338,21 @@
       position: absolute;
       top: 10%;
       left: 2%;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 0;
-      z-index: 2;
-    }
-
-    .circuit-label span {
       font-family: var(--mono);
       font-size: 0.7rem;
-      color: var(--accent);
-      letter-spacing: 0.1em;
+      color: #0b0f0e;
+      background: var(--accent);
+      border: none;
+      border-radius: 2px;
+      padding: 0.4rem 0.9rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      border-bottom: 1px solid var(--accent);
-      padding-bottom: 1px;
-      transition: opacity 0.2s;
+      cursor: pointer;
+      z-index: 2;
+      transition: background 0.2s, transform 0.15s;
     }
 
-    .circuit-label:hover span { opacity: 0.7; }
-
-    .circuit-label svg {
-      width: 28px;
-      height: 40px;
-      overflow: visible;
-    }
+    .circuit-label:hover { background: #51e895; transform: translateY(-1px); }
 
     /* MODAL */
     .modal-overlay {
@@ -506,17 +493,17 @@
       <div class="project-media">
         <div class="chart-container">
           <div class="chart-legend">
-            <div class="legend-item active" id="legend-0">
-              <div class="legend-dot" style="background:#009966;"></div>
-              Case 3 — Green
-            </div>
             <div class="legend-item active" id="legend-1">
               <div class="legend-dot" style="background:#cc2200;"></div>
-              Case 2 — Blue
+              Blue Ammonia
             </div>
             <div class="legend-item active" id="legend-2">
               <div class="legend-dot" style="background:#007a8c;"></div>
-              Case 1 — Gray
+              Gray Ammonia
+            </div>
+            <div class="legend-item active" id="legend-0">
+              <div class="legend-dot" style="background:#009966;"></div>
+              Green Ammonia
             </div>
           </div>
           <canvas id="ammoniaChart" height="220"></canvas>
@@ -548,11 +535,7 @@
       <div class="project-media">
         <div class="media-frame borderless">
           <button class="circuit-label" onclick="document.getElementById('circuitModal').classList.add('open')">
-            <span>View Circuit Diagram</span>
-            <svg viewBox="0 0 28 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <line x1="14" y1="0" x2="14" y2="30" stroke="#3ddc84" stroke-width="1.5"/>
-              <polyline points="8,22 14,32 20,22" fill="none" stroke="#3ddc84" stroke-width="1.5" stroke-linejoin="round"/>
-            </svg>
+            View Circuit Diagram
           </button>
           <img src="solar.png" alt="Solar charging station SolidWorks render">
         </div>
@@ -563,7 +546,7 @@
   </section>
 
   <div class="contact-bar">
-    <a href="mailto:advait@brown.edu">advait@brown.edu</a>
+    <a href="/cdn-cgi/l/email-protection#16777260777f6256746479617838737263"><span class="__cf_email__" data-cfemail="1a7b7e6c7b736e5a7868756d74347f7e6f">[email&#160;protected]</span></a>
     <span>Providence, RI</span>
   </div>
 
@@ -575,7 +558,7 @@
     </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
   <script>
     // ── Replicate MATLAB computation exactly ──────────────────────────────
     const moles_atm = 1.8e20;
@@ -627,9 +610,9 @@
     const ctx = document.getElementById('ammoniaChart').getContext('2d');
 
     const datasets = [
-      { label: 'Case 3 — Green', data: t3, borderColor: '#009966', backgroundColor: 'transparent', borderWidth: 2, pointRadius: 0, pointHoverRadius: 4, tension: 0.3 },
-      { label: 'Case 2 — Blue',  data: t2, borderColor: '#cc2200', backgroundColor: 'transparent', borderWidth: 2, pointRadius: 0, pointHoverRadius: 4, tension: 0.3 },
-      { label: 'Case 1 — Gray',  data: t1, borderColor: '#007a8c', backgroundColor: 'transparent', borderWidth: 2, pointRadius: 0, pointHoverRadius: 4, tension: 0.3 },
+      { label: 'Green Ammonia', data: t3, borderColor: '#009966', backgroundColor: 'transparent', borderWidth: 2, pointRadius: 0, pointHoverRadius: 4, tension: 0.3 },
+      { label: 'Blue Ammonia',  data: t2, borderColor: '#cc2200', backgroundColor: 'transparent', borderWidth: 2, pointRadius: 0, pointHoverRadius: 4, tension: 0.3 },
+      { label: 'Gray Ammonia',  data: t1, borderColor: '#007a8c', backgroundColor: 'transparent', borderWidth: 2, pointRadius: 0, pointHoverRadius: 4, tension: 0.3 },
     ];
 
     const chart = new Chart(ctx, {
@@ -687,10 +670,13 @@
     });
 
     // ── Legend hover syncs back to chart ─────────────────────────────────
-    document.querySelectorAll('.legend-item').forEach((item, i) => {
+    // Visual order in DOM: blue(1), gray(2), green(0)
+    const legendOrder = [1, 2, 0];
+    document.querySelectorAll('.legend-item').forEach((item, domIdx) => {
+      const chartIdx = legendOrder[domIdx];
       item.addEventListener('mouseenter', () => {
         document.querySelectorAll('.legend-item').forEach((el, j) => {
-          el.classList.toggle('active', j === i);
+          el.classList.toggle('active', j === domIdx);
         });
       });
       item.addEventListener('mouseleave', () => {
@@ -702,12 +688,4 @@
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1 });
-    document.querySelectorAll('.project-entry').forEach(el => observer.observe(el));
-
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') document.getElementById('circuitModal').classList.remove('open');
-    });
-  </script>
-
-</body>
-</html>
+    document.querySelectorAll(
